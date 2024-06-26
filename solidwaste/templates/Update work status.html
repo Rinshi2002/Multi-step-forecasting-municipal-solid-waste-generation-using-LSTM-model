@@ -1,0 +1,46 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{% extends 'agent_index.html'%}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/search_updateworkstatus">
+  <table width="200" border="1"class="table table-hover">
+    <tr>
+      <td>Date</td>
+      <td><input type="date" name="textfield"  value="{{ d }}" required/></td>
+      <td colspan="2"><input type="submit" name="Submit" value="Search" /></td>
+    </tr>
+    <tr>
+      <td>Sl.no</td>
+      <td>Date</td>
+      <td>Status</td>
+      <td>W_type</td>
+      <td></td>
+    </tr>
+      {% for i in val %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.date }}</td>
+      <td>{{ i.status }}</td>
+      <td>{{ i.wtype }}</td>
+        {% if i.status == 'pending' %}
+       <td><a href="update/{{ i.id }}#about">update</a></td>
+      {% else %}
+    <td>{{ i.status }}</td>
+    {% endif%}
+    </tr>
+      {% endfor %}
+    <tr>
+      <td colspan="4"><div align="right">
+      </div></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}
+{#</body>#}
+{#</html>#}

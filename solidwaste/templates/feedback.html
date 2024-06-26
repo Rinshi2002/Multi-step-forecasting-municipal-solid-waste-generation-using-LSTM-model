@@ -1,0 +1,36 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{% extends 'company_index.html'%}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/search_feedback">
+  <table width="200" border="1" class="table table-hover">
+    <tr>
+      <td>date</td>
+      <td><input type="date" name="textfield" value="{{ d }}" /></td>
+      <td><input type="submit" name="Submit" value="Search" /></td>
+    </tr>
+    <tr>
+      <td>user</td>
+      <td>feedback</td>
+      <td>date</td>
+    </tr>
+
+
+      {% for i in val %}
+    <tr>
+      <td>{{ i.USER.name }}</td>
+      <td>{{i.feedback}}</td>
+      <td>&nbsp;{{ i.date }}</td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+{% endblock %}
+{#</body>#}
+{#</html>#}
